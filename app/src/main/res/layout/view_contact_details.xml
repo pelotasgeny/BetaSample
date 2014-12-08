@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.example.applause.view.CircularImageView
+                android:id="@+id/contacts_detail_picture"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/contact_placeholder"/>
+
+            <TextView
+                android:id="@+id/contacts_detail_first_name"
+                style="@style/ContactName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/contacts_detail_picture"
+                tools:text="First Name"/>
+
+            <TextView
+                android:id="@+id/contacts_detail_last_name"
+                style="@style/ContactName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/contacts_detail_first_name"
+                android:layout_toRightOf="@+id/contacts_detail_picture"
+                tools:text="Last name"/>
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/contacts_detail_location_label"
+            style="@style/ContactDetailsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_detail_address"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:id="@+id/contacts_detail_location_city"
+            style="@style/ContactDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="City"/>
+
+        <TextView
+            android:id="@+id/contacts_detail_location_state"
+            style="@style/ContactDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="State"/>
+
+
+        <TextView
+            android:id="@+id/contacts_detail_location_zip"
+            style="@style/ContactDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Zip"/>
+
+        <TextView
+            android:id="@+id/contacts_detail_location_street"
+            style="@style/ContactDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Street"/>
+
+
+        <TextView
+            android:id="@+id/contacts_detail_email_label"
+            style="@style/ContactDetailsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/applause_contact_email"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/contacts_detail_email"
+            style="@style/ContactDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="email"
+            tools:text="Zip"/>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#ffa02c</color>
+    <color name="primary_dark">#f07f07</color>
+    <color name="accent">#ffdd0c00</color>
+
+    <color name="user_list_background">#fff</color>
+    <color name="user_list_background_pressed">@color/primary</color>
+
+    <color name="user_details_name">#000</color>
+    <color name="user_details_other">#000</color>
+</resources>

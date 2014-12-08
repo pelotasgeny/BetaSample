@@ -1,0 +1,57 @@
+def bins = [
+        Production: [
+                APK_FILE: file("build/outputs/apk/app-release.apk"),
+                APP_ID  : "1049",
+                GROUP   : "Production",
+                TASK    : "assembleRelease"
+        ]
+]
+
+def buildArguments(def version) {
+    return ['applause-tool',
+            'beta',
+            'distribute',
+            '--set-as-current',
+            '-g',
+            version.GROUP,
+            version.APP_ID,
+            version.APK_FILE]
+}
+
+def DISTRIBUTION_GROUP_NAME = "Distribution to Applause"
+
+tasks.create(name: "applauseToolLogin", type: Exec) {
+
+    description 'Logs in to applause-tool'
+    group DISTRIBUTION_GROUP_NAME
+
+    commandLine 'applause-tool', 'login',
+            '-u', System.getenv('APL_BETA_USER'),
+            '-p', System.getenv('APL_BETA_PASS')
+
+
+    standardOutput = new ByteArrayOutputStream()
+
+    ext.output = {
+        return standardOutput.toString()
+    }
+}
+
+bins.each {
+    def name = it.key
+    def config = it.value
+
+    tasks.create(name: "distribute" + name, type: Exec, dependsOn: [config.TASK, "applauseToolLogin"]) {
+
+        description 'Upload the ' + name + ' to Applause SDK'
+        group DISTRIBUTION_GROUP_NAME
+
+        commandLine buildArguments(config)
+
+        standardOutput = new ByteArrayOutputStream()
+
+        ext.output = {
+            return standardOutput.toString()
+        }
+    }
+}

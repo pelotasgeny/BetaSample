@@ -1,0 +1,17 @@
+.idea/
+
+*.iml
+target/
+
+build/
+
+apphance-lib/build/
+
+apphance-lib-test/build/
+
+apphance-test-app/build/
+
+local.properties
+.gradle
+
+.DS_Store

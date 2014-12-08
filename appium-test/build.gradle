@@ -1,0 +1,21 @@
+apply plugin: 'java'
+
+
+dependencies {
+    compile fileTree(dir: 'lib', include: ['*.jar'])
+    compile 'junit:junit:4.12'
+    compile 'io.appium:java-client:4.1.2'
+//    compile 'com.googlecode.json-simple:json-simple:1.1.1'
+//    compile 'org.apache.httpcomponents:httpclient:4.5.1'
+//    compile 'commons-lang:commons-lang:2.6'
+//    compile 'com.google.code.gson:gson:2.5'
+//    compile 'com.google.http-client:google-http-client:1.21.0'
+//    compile 'com.testdroid:testdroid-api:2.9'
+//    compile 'com.google.http-client:google-http-client-jackson2:1.21.0'
+}
+
+afterEvaluate {
+    tasks["test"].dependsOn project(":app").getTasksByName("assembleDebug", false)
+}
+
+task ciTest(dependsOn: ["clean", "test"])
